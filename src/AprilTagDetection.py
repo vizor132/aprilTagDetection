@@ -141,7 +141,7 @@ if all_detections:
         # Draw center and tag number (bigger, bolder font)
         center = tuple(detection.center.astype(int))
         cv2.circle(result_image, center, 5, color, -1)
-        cv2.putText(result_image, f"Tag {i+1}", 
+        cv2.putText(result_image, f"ID:{detection.tag_id}", 
                    (center[0]+10, center[1]-10),
                    cv2.FONT_HERSHEY_SIMPLEX, 1.5, color, 3) 
     
