@@ -122,7 +122,6 @@ if all_detections:
     
     print(f"\nDetailed Results:")
     for i, det in enumerate(all_detections):
-        color_name = color_names[i % len(color_names)]
         print(f"Tag {i+1}: ID={det.tag_id},Family:{det.families}, Center=({det.center[0]:.1f}, {det.center[1]:.1f}), Confidence={det.decision_margin:.2f}")
 
 # Visualize results
