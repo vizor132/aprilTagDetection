@@ -26,7 +26,7 @@ pip install pupil-apriltags opencv-python matplotlib numpy
 Run the script
 
 ```bash
-python src/apriltag_interactive.py
+python src/AprilTagDetection.py
 ```
 - Enter the path to your image when prompted
 - Select which tag families to scan (by number, “all”, or Enter for default)
