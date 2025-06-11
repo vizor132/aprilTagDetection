@@ -19,7 +19,7 @@ Python >= 3.8 required.
 Install dependencies:
 
 ```bash
-pip install pupil-apriltags opencv-python matplotlib
+pip install pupil-apriltags opencv-python matplotlib numpy
 ```
 
 ## Usage
