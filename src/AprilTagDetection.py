@@ -119,12 +119,11 @@ print(f"Value of apriltags: {apriltag_values}")
 # Print detailed detection info first
 if all_detections:
     colors = [(255,0,0), (0,255,0), (0,0,255), (255,255,0), (255,0,255)]
-    color_names = ["Red", "Green", "Blue", "Yellow", "Magenta"]
     
     print(f"\nDetailed Results:")
     for i, det in enumerate(all_detections):
         color_name = color_names[i % len(color_names)]
-        print(f"Tag {i+1} ({color_name}): ID={det.tag_id}, Center=({det.center[0]:.1f}, {det.center[1]:.1f}), Confidence={det.decision_margin:.2f}")
+        print(f"Tag {i+1}: ID={det.tag_id},Family:{det.families}, Center=({det.center[0]:.1f}, {det.center[1]:.1f}), Confidence={det.decision_margin:.2f}")
 
 # Visualize results
 if all_detections:
