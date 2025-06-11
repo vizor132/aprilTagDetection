@@ -1,5 +1,4 @@
 # Interactive AprilTag Detection Script
-# Install: pip install pupil-apriltags opencv-python matplotlib
 
 import cv2
 import numpy as np
@@ -117,6 +116,16 @@ print(f"\nHow many apriltags read: {apriltags_count}")
 print(f"Which families detected: {families_detected}")
 print(f"Value of apriltags: {apriltag_values}")
 
+# Print detailed detection info first
+if all_detections:
+    colors = [(255,0,0), (0,255,0), (0,0,255), (255,255,0), (255,0,255)]
+    color_names = ["Red", "Green", "Blue", "Yellow", "Magenta"]
+    
+    print(f"\nDetailed Results:")
+    for i, det in enumerate(all_detections):
+        color_name = color_names[i % len(color_names)]
+        print(f"Tag {i+1} ({color_name}): ID={det.tag_id}, Center=({det.center[0]:.1f}, {det.center[1]:.1f}), Confidence={det.decision_margin:.2f}")
+
 # Visualize results
 if all_detections:
     result_image = image.copy()
@@ -129,12 +138,14 @@ if all_detections:
         corners = detection.corners.astype(int)
         cv2.polylines(result_image, [corners], True, color, 2)
         
-        # Draw center and ID
+        # Draw center and tag number (bigger, bolder font)
         center = tuple(detection.center.astype(int))
         cv2.circle(result_image, center, 5, color, -1)
-        cv2.putText(result_image, f"ID:{detection.tag_id}", 
+        cv2.putText(result_image, f"Tag {i+1}", 
                    (center[0]+10, center[1]-10),
-                   cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
+                   cv2.FONT_HERSHEY_SIMPLEX, 1.5, color, 3) 
+    
+    print(f"\nDisplaying image with detected tags...")
     
     # Show result
     plt.figure(figsize=(10, 8))
@@ -142,11 +153,6 @@ if all_detections:
     plt.title(f"AprilTag Detection - {apriltags_count} tags found")
     plt.axis('off')
     plt.show()
-    
-    # Print detailed detection info
-    print(f"\nDetailed Results:")
-    for i, det in enumerate(all_detections):
-        print(f"Tag {i+1}: ID={det.tag_id}, Center=({det.center[0]:.1f}, {det.center[1]:.1f}), Confidence={det.decision_margin:.2f}")
 else:
     print("\n❌ No AprilTags detected in the image")
     print("Try:")
