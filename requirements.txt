@@ -1,0 +1,4 @@
+pupil-apriltags
+opencv-python
+matplotlib
+numpy
