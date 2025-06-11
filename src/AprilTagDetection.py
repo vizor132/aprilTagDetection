@@ -122,7 +122,7 @@ if all_detections:
     
     print(f"\nDetailed Results:")
     for i, det in enumerate(all_detections):
-        print(f"Tag {i+1}: ID={det.tag_id},Family:{det.families}, Center=({det.center[0]:.1f}, {det.center[1]:.1f}), Confidence={det.decision_margin:.2f}")
+        print(f"Tag {i+1}: ID={det.tag_id},Family:{det.tag_family}, Center=({det.center[0]:.1f}, {det.center[1]:.1f}), Confidence={det.decision_margin:.2f}")
 
 # Visualize results
 if all_detections:
